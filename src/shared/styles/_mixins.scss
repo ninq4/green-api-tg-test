@@ -44,4 +44,15 @@ $content-width: 760px;
     border-color: var(--accent);
     background: var(--bg);
   }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: var(--text);
+    caret-color: var(--text);
+    box-shadow: 0 0 0 1000px var(--bg-muted) inset;
+    transition: background-color 9999s;
+  }
+
+  &:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px var(--bg) inset;
+  }
 }

@@ -1,0 +1,20 @@
+@use '@/shared/styles/mixins' as *;
+
+.form {
+  padding: 8px 16px 12px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.input {
+  @include input;
+}
+
+.error {
+  margin: 6px 0 0;
+  color: var(--danger);
+  font-size: 13px;
+}

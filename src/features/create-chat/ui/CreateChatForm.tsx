@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { maskPhoneInput, normalizePhone } from '@/shared/lib'
+import { IconButton } from '@/shared/ui'
 import { useCreateChat } from '../model/useCreateChat'
+import styles from './CreateChatForm.module.scss'
 
 export function CreateChatForm() {
   const createChat = useCreateChat()
@@ -20,10 +22,10 @@ export function CreateChatForm() {
   }
 
   return (
-    <form className="create-chat" onSubmit={handleSubmit}>
-      <div className="create-chat__row">
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.row}>
         <input
-          className="create-chat__input"
+          className={styles.input}
           value={phone}
           onChange={(e) => setPhone(maskPhoneInput(e.target.value, phone))}
           type="tel"
@@ -31,11 +33,11 @@ export function CreateChatForm() {
           placeholder="+7 (900) 123-45-67"
           aria-label="Номер телефона получателя"
         />
-        <button className="icon-button icon-button--accent" type="submit" title="Создать чат">
+        <IconButton variant="accent" type="submit" title="Создать чат">
           +
-        </button>
+        </IconButton>
       </div>
-      {error && <p className="create-chat__error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </form>
   )
 }

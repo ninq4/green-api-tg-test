@@ -1,10 +1,11 @@
 import { useSessionStore } from '@/entities/session'
+import { IconButton } from '@/shared/ui'
 
 export function LogoutButton() {
   const logout = useSessionStore((s) => s.logout)
   return (
-    <button type="button" className="icon-button" onClick={logout} title="Выйти">
+    <IconButton onClick={logout} title="Выйти">
       ⎋
-    </button>
+    </IconButton>
   )
 }

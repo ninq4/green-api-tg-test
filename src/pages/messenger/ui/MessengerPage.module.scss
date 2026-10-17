@@ -1,0 +1,31 @@
+@use '@/shared/styles/mixins' as *;
+
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.messenger {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  background: var(--bg);
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sidebar,
+.chat {
+  min-width: 0;
+}
+
+@include mobile {
+  .chatOpen .sidebar,
+  .messenger:not(.chatOpen) .chat {
+    display: none;
+  }
+}

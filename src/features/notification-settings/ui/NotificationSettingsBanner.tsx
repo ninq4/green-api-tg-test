@@ -1,3 +1,4 @@
+import { Banner, BannerAction } from '@/shared/ui'
 import { useNotificationSettings } from '../model/useNotificationSettings'
 
 export function NotificationSettingsBanner() {
@@ -9,35 +10,29 @@ export function NotificationSettingsBanner() {
       return null
     case 'problem':
       return (
-        <div className="banner banner--warning" role="alert">
+        <Banner role="alert">
           <span>Ответы собеседников не будут приходить: {status.problems.join('; ')}.</span>
-          <button type="button" className="banner__action" onClick={enable}>
-            Включить
-          </button>
-        </div>
+          <BannerAction onClick={enable}>Включить</BannerAction>
+        </Banner>
       )
     case 'saving':
-      return <div className="banner banner--warning">Сохраняем настройки инстанса…</div>
+      return <Banner>Сохраняем настройки инстанса…</Banner>
     case 'saved':
       return (
-        <div className="banner banner--success" role="status">
+        <Banner variant="success" role="status">
           <span>Уведомления включены. Инстанс перезапустится, настройки применятся в течение ~5 минут.</span>
-          <button type="button" className="banner__action" onClick={dismiss}>
-            OK
-          </button>
-        </div>
+          <BannerAction onClick={dismiss}>OK</BannerAction>
+        </Banner>
       )
     case 'error':
       return (
-        <div className="banner banner--warning" role="alert">
+        <Banner role="alert">
           <span>Не удалось проверить настройки инстанса: {status.message}</span>
-          <button type="button" className="banner__action" onClick={check}>
-            Повторить
-          </button>
-          <button type="button" className="banner__action banner__action--secondary" onClick={dismiss}>
+          <BannerAction onClick={check}>Повторить</BannerAction>
+          <BannerAction secondary onClick={dismiss}>
             Скрыть
-          </button>
-        </div>
+          </BannerAction>
+        </Banner>
       )
   }
 }

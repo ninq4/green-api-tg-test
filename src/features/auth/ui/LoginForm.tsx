@@ -1,6 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { useSessionStore } from '@/entities/session'
 import { defaultApiUrl, getStateInstance, GreenApiError, type InstanceCredentials } from '@/shared/api/green-api'
+import { Button } from '@/shared/ui'
+import styles from './LoginForm.module.scss'
 
 export function LoginForm() {
   const login = useSessionStore((s) => s.login)
@@ -41,8 +43,8 @@ export function LoginForm() {
   }
 
   return (
-    <form className="login-form" onSubmit={handleSubmit}>
-      <label className="field">
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <label className={styles.field}>
         <span>idInstance</span>
         <input
           value={idInstance}
@@ -53,7 +55,7 @@ export function LoginForm() {
           autoFocus
         />
       </label>
-      <label className="field">
+      <label className={styles.field}>
         <span>apiTokenInstance</span>
         <input
           value={apiTokenInstance}
@@ -63,7 +65,7 @@ export function LoginForm() {
           required
         />
       </label>
-      <label className="field">
+      <label className={styles.field}>
         <span>apiUrl (необязательно)</span>
         <input
           value={apiUrl}
@@ -73,11 +75,11 @@ export function LoginForm() {
         />
       </label>
 
-      {error && <p className="login-form__error">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
-      <button className="button" type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading}>
         {loading ? 'Проверяем…' : 'Войти'}
-      </button>
+      </Button>
     </form>
   )
 }

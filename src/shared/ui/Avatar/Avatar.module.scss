@@ -1,0 +1,21 @@
+.avatar {
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 600;
+  object-fit: cover;
+}
+
+.md {
+  width: 44px;
+  height: 44px;
+  font-size: 18px;
+}
+
+.sm {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+}

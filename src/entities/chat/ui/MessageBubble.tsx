@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
-import { formatTime } from '@/shared/lib'
+import { cn, formatTime } from '@/shared/lib'
 import type { Message, MessageStatus } from '../model/types'
+import styles from './MessageBubble.module.scss'
 
 const STATUS_ICON: Record<MessageStatus, { icon: string; title: string }> = {
   sending: { icon: '🕓', title: 'Отправляется' },
@@ -19,12 +20,19 @@ export function MessageBubble({ message, action }: Props) {
   const status = message.status && STATUS_ICON[message.status]
 
   return (
-    <div className={`message message--${message.direction}${message.status ? ` message--${message.status}` : ''}`}>
-      <span className="message__text">{message.text}</span>
-      <span className="message__meta">
+    <div
+      className={cn(
+        styles.message,
+        message.direction === 'in' ? styles.incoming : styles.outgoing,
+        message.status === 'failed' && styles.failed,
+        message.status === 'read' && styles.read,
+      )}
+    >
+      <span className={styles.text}>{message.text}</span>
+      <span className={styles.meta}>
         {formatTime(message.timestamp)}
         {status && (
-          <span className="message__status" title={status.title}>
+          <span className={styles.status} title={status.title}>
             {status.icon}
           </span>
         )}

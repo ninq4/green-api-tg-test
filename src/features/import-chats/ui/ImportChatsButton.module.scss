@@ -1,0 +1,33 @@
+@use '@/shared/styles/mixins' as *;
+
+.importChats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 0 16px 10px;
+  font-size: 13px;
+}
+
+.button {
+  @include text-button;
+  color: var(--accent);
+  font-weight: 600;
+
+  &:hover:not(:disabled) {
+    text-decoration: underline;
+  }
+
+  &:disabled {
+    color: var(--text-muted);
+    cursor: default;
+  }
+}
+
+.status {
+  color: var(--text-muted);
+}
+
+.error {
+  color: var(--danger);
+}

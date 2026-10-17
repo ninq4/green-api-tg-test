@@ -1,0 +1,63 @@
+@use '@/shared/styles/mixins' as *;
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--chat-bg);
+}
+
+.empty {
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  @include chip;
+  margin: auto;
+  padding: 6px 14px;
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+
+  .back {
+    display: none;
+
+    @include mobile {
+      display: grid;
+    }
+  }
+}
+
+.title {
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.messages {
+  @include content-gutter(16px);
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.day {
+  @include chip;
+  align-self: center;
+  margin: 8px 0;
+  padding: 3px 10px;
+  font-size: 12px;
+}

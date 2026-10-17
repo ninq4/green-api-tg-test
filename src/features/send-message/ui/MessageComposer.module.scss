@@ -1,0 +1,44 @@
+@use '@/shared/styles/mixins' as *;
+
+.composer {
+  @include content-gutter(10px, 14px);
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.input {
+  flex: 1;
+  max-height: 160px;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 22px;
+  background: var(--bg);
+  resize: none;
+  outline: none;
+  field-sizing: content;
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+.send {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 18px;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+
+  &:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}

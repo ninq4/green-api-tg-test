@@ -1,16 +1,18 @@
+import { cn } from '@/shared/lib'
 import { useImportChats } from '../model/useImportChats'
+import styles from './ImportChatsButton.module.scss'
 
 export function ImportChatsButton() {
   const { state, importChats } = useImportChats()
 
   return (
-    <div className="import-chats">
-      <button type="button" className="import-chats__button" onClick={importChats} disabled={state.type === 'loading'}>
+    <div className={styles.importChats}>
+      <button type="button" className={styles.button} onClick={importChats} disabled={state.type === 'loading'}>
         {state.type === 'loading' ? 'Загружаем…' : 'Загрузить чаты из Telegram'}
       </button>
-      {state.type === 'done' && <span className="import-chats__status">Личных чатов: {state.count}</span>}
+      {state.type === 'done' && <span className={styles.status}>Личных чатов: {state.count}</span>}
       {state.type === 'error' && (
-        <span className="import-chats__status import-chats__status--error">{state.message}</span>
+        <span className={cn(styles.status, styles.error)}>{state.message}</span>
       )}
     </div>
   )

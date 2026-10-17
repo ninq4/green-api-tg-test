@@ -1,0 +1,10 @@
+@use '@/shared/styles/mixins' as *;
+
+.retry {
+  @include text-button;
+  flex-basis: 100%;
+  color: var(--danger);
+  font-size: 12px;
+  text-align: right;
+  text-decoration: underline;
+}

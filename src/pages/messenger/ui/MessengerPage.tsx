@@ -4,23 +4,24 @@ import { useCredentials } from '@/entities/session'
 import { NotificationSettingsBanner } from '@/features/notification-settings'
 import { useReceiveMessages } from '@/features/receive-messages'
 import { ChatSidebar } from '@/widgets/chat-sidebar'
+import { cn } from '@/shared/lib'
+import { Banner } from '@/shared/ui'
 import { ChatWindow } from '@/widgets/chat-window'
+import styles from './MessengerPage.module.scss'
 
 function MessengerLayout() {
   const connectionError = useReceiveMessages()
   const activeChat = useActiveChat()
 
   return (
-    <div className="messenger-page">
+    <div className={styles.page}>
       <NotificationSettingsBanner />
       {connectionError && (
-        <div className="banner banner--warning" role="alert">
-          Нет связи с GREEN-API, переподключаемся… ({connectionError})
-        </div>
+        <Banner role="alert">Нет связи с GREEN-API, переподключаемся… ({connectionError})</Banner>
       )}
-      <main className={`messenger${activeChat ? ' messenger--chat-open' : ''}`}>
-        <ChatSidebar />
-        <ChatWindow />
+      <main className={cn(styles.messenger, activeChat && styles.chatOpen)}>
+        <ChatSidebar className={styles.sidebar} />
+        <ChatWindow className={styles.chat} />
       </main>
     </div>
   )

@@ -1,6 +1,7 @@
 import { useState, type FormEvent, type KeyboardEvent } from 'react'
 import type { Chat } from '@/entities/chat'
 import { useSendMessage } from '../model/useSendMessage'
+import styles from './MessageComposer.module.scss'
 
 const MAX_LENGTH = 4096
 
@@ -28,9 +29,9 @@ export function MessageComposer({ chat }: { chat: Chat }) {
   }
 
   return (
-    <form className="composer" onSubmit={handleSubmit}>
+    <form className={styles.composer} onSubmit={handleSubmit}>
       <textarea
-        className="composer__input"
+        className={styles.input}
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -39,7 +40,7 @@ export function MessageComposer({ chat }: { chat: Chat }) {
         rows={1}
         autoFocus
       />
-      <button className="composer__send" type="submit" disabled={!text.trim()} title="Отправить">
+      <button className={styles.send} type="submit" disabled={!text.trim()} title="Отправить">
         ➤
       </button>
     </form>
